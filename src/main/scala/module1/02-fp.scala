@@ -160,20 +160,32 @@ object hof{
       case Option.None => b
     }
 
-    def map[B](f: A => B): Option[B] = this match {
-      case Option.Some(v) => Option.Some(f(v))
+    def map[B](f: A => B): Option[B] = flatMap(a => Option.Some(f(a)))
+
+    def flatMap[B](f: A => Option[B]): Option[B] = this match {
+      case Option.Some(v) => f(v)
       case Option.None => Option.None
     }
 
-    def flatMap[B](f: A => Option[B]): Option[B] = ???
+    def printIfAny: Unit = this match {
+      case Option.Some(v) => println(v)
+      case Option.None =>
+    }
 
-    // val i : Option[Int]  i.map(v => v + 1)
+    def orElse[B >: A](b: Option[B]): Option[B] = this match {
+      case v @ Option.Some(_) => v
+      case Option.None => b
+    }
 
+    def zip[B >: A](optB: Option[B]): Option[(A, B)] = this match {
+      case Option.Some(a) => optB.map(b => (a, b))
+      case Option.None => Option.None
+    }
 
-    def f(x: Int, y: Int): Option[Int] =
-      if(y == 0) Option.None
-      else Option.Some(x / y)
-
+    def filter(pred: A => Boolean): Option[A] = this match {
+      case v @ Option.Some(a) if pred(a) => v
+      case Option.Some(_) | Option.None => Option.None
+    }
 
   }
 
