@@ -16,13 +16,20 @@ object higher_kinded_types{
   def tuplef[F[_], A, B](fa: F[A], fb: F[B]): F[(A, B)] = ???
 
 
-  trait Bindable[F[_], A] {
+  abstract class Bindable[F[_], A] {
+    def map[B](f: A => B): F[B]
+    def flatMap[B](f: A => F[B]): F[B]
+  }
+  trait Bindable2[F[_], A] {
     def map[B](f: A => B): F[B]
     def flatMap[B](f: A => F[B]): F[B]
   }
 
+
+
   def tupleBindable[F[_], A, B](fa: Bindable[F, A], fb: Bindable[F, B]): F[(A, B)] =
     fa.flatMap{ a => fb.map((a, _))}
+
 
   def listBindable[A](list: List[A]): Bindable[List, A] = new Bindable[List, A] {
     override def map[B](f: A => B): List[B] = list.map(f)
