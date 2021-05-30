@@ -1,5 +1,4 @@
 package module1
-package module1
 
 import module1.subtyping.adt.sealed_traits.Card.{Clubs, Diamonds, Spades}
 
@@ -28,7 +27,7 @@ object subtyping {
    *
    */
 
-  val t1 : IsSubtypeOf[Vehicle, Car] = ???
+//  lazy val t1 : IsSubtypeOf[Vehicle, Car] = ???
 
 
   /**
@@ -37,7 +36,7 @@ object subtyping {
    *
    */
 
-  val t2 : IsSubtypeOf[Mustang.type, Car] = ???
+//  lazy val t2 : IsSubtypeOf[Mustang.type, Car] = ???
 
 
   /**
@@ -46,7 +45,7 @@ object subtyping {
    *
    */
 
-  val t3: IsSupertypeOf[Vehicle, Harley.type ] = ???
+//  lazy val t3: IsSupertypeOf[Vehicle, Harley.type ] = ???
 
 
   /**
@@ -59,10 +58,10 @@ object subtyping {
 
 
 
-  lazy val mustCompile1    = isInstanceOf[Mustang.type, Car](Mustang)
+/*  lazy val mustCompile1    = isInstanceOf[Mustang.type, Car](Mustang)
   lazy val mustCompile2    = isInstanceOf[Harley.type, Moto](Harley)
   lazy val mustNotCompile1 = isInstanceOf[Mustang.type, Moto](Mustang)
-  lazy val mustNotCompile2 = isInstanceOf[Harley.type, Car](Harley)
+  lazy val mustNotCompile2 = isInstanceOf[Harley.type, Car](Harley)*/
 
 
   // Вариантность
@@ -71,7 +70,7 @@ object subtyping {
 
   // Вариантность полей
   // val
-  class Garage2[-T](val vehicle: T)
+//  class Garage2[-T](val vehicle: T)
 
   //  val hondaShadow = new Moto {}
   //  val shadowGarage = new Garage2[Vehicle](hondaShadow)
@@ -80,18 +79,18 @@ object subtyping {
 
 
   // var
-  class Garage3[+T](var vehicle: T)
+//  class Garage3[+T](var vehicle: T)
 
-  val hondaShadow = new Moto {}
+/*  val hondaShadow = new Moto {}
   val shadowGarage = new Garage3[Vehicle](hondaShadow)
 
-  val _ = shadowGarage.vehicle = new Car {}
+  val _ = shadowGarage.vehicle = new Car {}*/
 
 
   // method args
-  class Garage4[+T]{
+/*  class Garage4[+T]{
     def put(vehicle: T): Unit = ???
-  }
+  }*/
 
   //  val garageVehicle: Garage4[Vehicle] = new Garage4[Car]
   //  val _ = garageVehicle.put(new Moto {})
@@ -303,7 +302,6 @@ object subtyping {
 
       val a: A = ???
 
-      val alex = "Alex"
 
       val str: String = ???
 
