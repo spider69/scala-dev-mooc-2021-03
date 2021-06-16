@@ -163,9 +163,9 @@ object zioConcurrency {
    *  Concurrent operators
    */
 
-   val _ = getExchangeRatesLocation1 zipPar getExchangeRatesLocation2
-   val _ = ZIO.foreachPar(List("1", "2", "3"))(str => putStrLn(str))
-   val _ = getExchangeRatesLocation1 race getExchangeRatesLocation2
+   //val _ = getExchangeRatesLocation1 zipPar getExchangeRatesLocation2
+   //val _ = ZIO.foreachPar(List("1", "2", "3"))(str => putStrLn(str))
+   //val _ = getExchangeRatesLocation1 race getExchangeRatesLocation2
 
 
   /**
@@ -174,18 +174,18 @@ object zioConcurrency {
 
 
   // Правило 1
-  lazy val doSomething: UIO[Unit] = ???
-  lazy val doSomethingElse: UIO[Unit] = ???
+//  lazy val doSomething: UIO[Unit] = ???
+  //lazy val doSomethingElse: UIO[Unit] = ???
 
   lazy val executor: Executor = ???
 
-  val eff = for{
-    f <- doSomething.fork
-    _ <- doSomethingElse
-    _ <- f.join
-  } yield ()
+  // val eff = for{
+  //   f <- doSomething.fork
+  //   _ <- doSomethingElse
+  //   _ <- f.join
+  // } yield ()
 
-  val result = eff.lock(executor)
+  // val result = eff.lock(executor)
 
 
 
@@ -195,13 +195,13 @@ object zioConcurrency {
 
 
 
-  val eff2 = for{
-    f <- doSomething.lock(executor2).fork
-    _ <- doSomethingElse
-    _ <- f.join
-  } yield ()
+  // val eff2 = for{
+  //   f <- doSomething.lock(executor2).fork
+  //   _ <- doSomethingElse
+  //   _ <- f.join
+  // } yield ()
 
-  val result2 = eff2.lock(executor1)
+ // val result2 = eff2.lock(executor1)
 
 
   /**
