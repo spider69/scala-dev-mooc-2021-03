@@ -19,6 +19,8 @@ object Dependencies {
     lazy val CirceVersion = "0.13.0"
 
     lazy val Http4sVersion = "0.21.7"
+
+    lazy val AkkaVersion = "2.6.15"
   }
 
   lazy val kindProjector = "org.typelevel" %% "kind-projector" % KindProjectorVersion
@@ -71,4 +73,6 @@ object Dependencies {
     "org.http4s" %% "http4s-blaze-server" % Http4sVersion,
     "org.http4s" %% "http4s-blaze-client" % Http4sVersion
   )
+
+  lazy val akka = "com.typesafe.akka" %% "akka-actor-typed" % AkkaVersion
 }

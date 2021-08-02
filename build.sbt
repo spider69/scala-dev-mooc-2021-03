@@ -17,7 +17,8 @@ lazy val root = (project in file("."))
       Dependencies.kindProjector,
       Dependencies.logback,
       Dependencies.liquibase,
-      Dependencies.postgres
+      Dependencies.postgres,
+      Dependencies.akka
     ),
     addCompilerPlugin(Dependencies.kindProjector))
 
